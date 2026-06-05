@@ -21,7 +21,7 @@ export function Navbar() {
             </a>
           ))}
         </div>
-        <PrimaryButton href="/demo/upload">Try Demo</PrimaryButton>
+        <PrimaryButton href="/backoffice">Try Demo</PrimaryButton>
       </nav>
     </header>
   );

@@ -36,6 +36,20 @@ a:hover {
   transform: translateY(-1px);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  button:hover,
+  a:hover {
+    transform: none;
+  }
+}
+
 .section-shell {
   width: min(1180px, calc(100% - 32px));
   margin: 0 auto;
@@ -46,4 +60,10 @@ a:hover {
     linear-gradient(rgba(18, 59, 109, 0.06) 1px, transparent 1px),
     linear-gradient(90deg, rgba(18, 59, 109, 0.06) 1px, transparent 1px);
   background-size: 28px 28px;
+}
+
+.bank-panel {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(246, 248, 251, 0.98)),
+    linear-gradient(90deg, rgba(200, 16, 46, 0.08), rgba(18, 59, 109, 0.06));
 }

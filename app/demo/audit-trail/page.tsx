@@ -1,14 +1,23 @@
 import { Fingerprint, LockKeyhole } from "lucide-react";
-import { auditRows } from "@/data/tradesafe";
+import { auditHashCards, auditRows } from "@/data/tradesafe";
 import { DemoPanel, DemoShell } from "@/components/demo-shell";
 
 export default function AuditTrailPage() {
   return (
     <DemoShell pathname="/demo/audit-trail">
-      <DemoPanel title="Audit Trail">
+      <DemoPanel title="Audit Trail" subtitle="The final screen proves auditability without storing sensitive customer documents on-chain.">
+        <div className="mb-6 grid gap-4 md:grid-cols-4">
+          {auditHashCards.map(([label, value, body]) => (
+            <article key={label} className="rounded-lg border border-bank-line bg-bank-bg p-4">
+              <p className="text-xs font-bold uppercase tracking-widest text-bank-muted">{label}</p>
+              <p className="mt-2 font-mono text-2xl font-bold text-bank-navy">{value}</p>
+              <p className="mt-2 text-sm leading-5 text-bank-muted">{body}</p>
+            </article>
+          ))}
+        </div>
         <div className="grid gap-6 lg:grid-cols-[1fr_0.8fr]">
-          <div className="overflow-hidden rounded-lg border border-bank-line">
-            <table className="w-full text-left text-sm">
+          <div className="overflow-x-auto rounded-lg border border-bank-line">
+            <table className="w-full min-w-[520px] text-left text-sm">
               <tbody>
                 {auditRows.map(([label, value]) => (
                   <tr key={label} className="border-b border-bank-line bg-white last:border-b-0">

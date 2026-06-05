@@ -13,6 +13,7 @@ export default function CreditMemoPage() {
     <DemoShell pathname="/demo/credit-memo">
       <DemoPanel
         title="AI Credit Memo"
+        subtitle="The memo turns dashboard evidence into a structured recommendation that remains reviewable, editable and officer-owned."
         actions={<Link href="/demo/audit-trail" className="rounded-md bg-bank-red px-5 py-3 text-sm font-bold text-white">Record Audit Trail</Link>}
       >
         <article className="rounded-lg border border-bank-line bg-bank-bg p-6">
@@ -60,8 +61,8 @@ export default function CreditMemoPage() {
             </ul>
           </div>
           <div className="mt-6 flex flex-wrap gap-3">
-            {["Approve with Conditions", "Request More Documents", "Escalate to Compliance"].map((action) => (
-              <button key={action} className="rounded-md border border-bank-line bg-white px-4 py-3 text-sm font-bold text-bank-navy hover:border-bank-red">
+            {["Approve with Conditions", "Request More Documents", "Escalate to Compliance"].map((action, index) => (
+              <button key={action} className={`rounded-md border px-4 py-3 text-sm font-bold ${index === 0 ? "border-bank-red bg-bank-red text-white" : "border-bank-line bg-white text-bank-navy hover:border-bank-red"}`}>
                 {action}
               </button>
             ))}

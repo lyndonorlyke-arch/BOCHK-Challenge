@@ -36,7 +36,7 @@ export function SectionHeader({
 
 export function PrimaryButton({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <Link href={href} className="inline-flex min-h-11 items-center justify-center rounded-md bg-bank-red px-5 py-3 text-sm font-bold text-white shadow-subtle hover:bg-bank-darkRed">
+    <Link href={href} className="inline-flex min-h-11 items-center justify-center rounded-md bg-bank-red px-5 py-3 text-sm font-bold text-white shadow-subtle ring-1 ring-bank-red/10 hover:bg-bank-darkRed">
       {children}
     </Link>
   );
@@ -109,6 +109,19 @@ export function RiskScoreCard({ title, score, label, tone }: { title: string; sc
         <strong className="text-4xl font-bold text-bank-navy">{score}</strong>
         <span className={`rounded-full border px-3 py-1 text-xs font-bold ${toneClasses[tone]}`}>{label}</span>
       </div>
+      <div className="mt-5 h-2 rounded-full bg-bank-bg">
+        <div className={`h-2 rounded-full ${tone === "green" ? "bg-green-600" : tone === "amber" ? "bg-amber-500" : tone === "red" ? "bg-red-600" : "bg-bank-blue"}`} style={{ width: score.includes("85") ? "85%" : score.includes("78") ? "78%" : "62%" }} />
+      </div>
+    </article>
+  );
+}
+
+export function MetricTile({ label, value, body, inverse = false }: { label: string; value: string; body: string; inverse?: boolean }) {
+  return (
+    <article className={`rounded-lg border p-4 ${inverse ? "border-white/15 bg-white/10 text-white" : "border-bank-line bg-white text-bank-navy shadow-subtle"}`}>
+      <p className={`text-xs font-bold uppercase tracking-widest ${inverse ? "text-white/60" : "text-bank-muted"}`}>{label}</p>
+      <p className={`mt-2 text-2xl font-bold ${inverse ? "text-white" : "text-bank-navy"}`}>{value}</p>
+      <p className={`mt-2 text-sm leading-5 ${inverse ? "text-white/70" : "text-bank-muted"}`}>{body}</p>
     </article>
   );
 }

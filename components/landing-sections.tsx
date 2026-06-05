@@ -19,9 +19,12 @@ import {
   buyerConcentration,
   cashFlowData,
   caseProfile,
+  demoFlowCards,
   featureCards,
   governanceRows,
+  heroMetrics,
   impactKpis,
+  judgeTakeaways,
   positiveSignals,
   problemCards,
   riskFlags,
@@ -31,34 +34,43 @@ import {
   workflowSteps
 } from "@/data/tradesafe";
 import { DashboardPreview } from "@/components/dashboard-preview";
-import { InfoCard, KPIcard, PrimaryButton, RiskScoreCard, SecondaryButton, SectionHeader } from "@/components/ui";
+import { InfoCard, KPIcard, MetricTile, PrimaryButton, RiskScoreCard, SecondaryButton, SectionHeader } from "@/components/ui";
 
 const pieColors = ["#123B6D", "#C8102E", "#16A34A", "#F59E0B"];
 
 export function HeroSection() {
   return (
-    <section className="bank-grid bg-white py-16 md:py-20">
-      <div className="section-shell grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+    <section className="bank-grid bg-white py-10 md:py-14">
+      <div className="section-shell grid items-center gap-8 lg:grid-cols-[1.02fr_0.98fr]">
         <div>
-          <p className="mb-4 text-sm font-bold uppercase tracking-widest text-bank-red">BOCHK Challenge 2026 Proposal</p>
-          <h1 className="text-4xl font-bold tracking-normal text-bank-navy md:text-6xl">BOCHK TradeSafe Credit Co-pilot</h1>
-          <p className="mt-5 text-xl font-semibold leading-8 text-bank-blue">AI-powered, auditable trade finance risk assistant for cross-border SMEs.</p>
-          <p className="mt-5 max-w-2xl text-base leading-7 text-bank-muted md:text-lg">
-            Transform SME payment records, invoices, logistics documents and counterparty data into explainable credit, transaction authenticity and AML risk insights.
-          </p>
-          <div className="mt-7 flex flex-wrap gap-3">
-            {["Faster approval", "Safer lending", "More inclusive cross-border SME finance"].map((item) => (
-              <span key={item} className="rounded-full border border-bank-line bg-white px-4 py-2 text-sm font-bold text-bank-navy shadow-subtle">
-                {item}
-              </span>
-            ))}
+          <div className="inline-flex items-center gap-2 rounded-full border border-bank-line bg-white px-4 py-2 text-xs font-bold uppercase tracking-widest text-bank-red shadow-subtle">
+            BOCHK Challenge 2026 Proposal
           </div>
+          <h1 className="mt-5 text-4xl font-bold tracking-normal text-bank-navy md:text-6xl">
+            TradeSafe Credit Co-pilot
+          </h1>
+          <p className="mt-5 max-w-2xl text-xl font-semibold leading-8 text-bank-blue">
+            Turn SME trade documents into auditable credit risk intelligence for BOCHK credit officers.
+          </p>
+          <ul className="mt-6 grid gap-3">
+            {judgeTakeaways.map((item) => (
+              <li key={item} className="flex gap-3 rounded-md border border-bank-line bg-white p-3 text-sm font-semibold text-bank-muted shadow-subtle">
+                <CheckCircle2 className="mt-0.5 shrink-0 text-green-600" size={16} />
+                {item}
+              </li>
+            ))}
+          </ul>
           <div className="mt-8 flex flex-wrap gap-4">
-            <PrimaryButton href="/demo/upload">Start Live Demo</PrimaryButton>
+            <PrimaryButton href="/backoffice">Start Live Demo</PrimaryButton>
             <SecondaryButton href="#solution">View Solution Overview</SecondaryButton>
           </div>
         </div>
         <DashboardPreview />
+      </div>
+      <div className="section-shell mt-8 grid gap-4 md:grid-cols-3">
+        {heroMetrics.map(([label, value, body]) => (
+          <MetricTile key={label} label={label} value={value} body={body} />
+        ))}
       </div>
     </section>
   );
@@ -68,7 +80,11 @@ export function ProblemSection() {
   return (
     <section id="problem" className="py-16 md:py-20">
       <div className="section-shell">
-        <SectionHeader title="The Problem: Cross-border SME trade finance is data-rich but decision-poor" />
+        <SectionHeader
+          eyebrow="Why this matters"
+          title="Cross-border SME trade finance is data-rich but decision-poor"
+          body="The bottleneck is not the absence of files. It is turning scattered evidence into a decision record a bank can trust."
+        />
         <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {problemCards.map((card) => (
             <InfoCard key={card.title} {...card} />
@@ -128,8 +144,9 @@ export function SolutionSection() {
     <section id="solution" className="py-16 md:py-20">
       <div className="section-shell">
         <SectionHeader
+          eyebrow="Banking workflow"
           title="Our Solution: TradeSafe Credit Co-pilot"
-          body="The system does not replace BOCHK credit officers. It helps them make faster, safer and more explainable lending decisions."
+          body="A governed assistant for relationship managers, credit officers and compliance teams. AI prepares evidence; BOCHK officers retain final decision authority."
         />
         <div className="mt-10 grid gap-5 lg:grid-cols-3">
           {solutionColumns.map(({ title, icon: Icon, items }) => (
@@ -185,13 +202,25 @@ export function DemoEntrySection() {
   return (
     <section id="demo" className="py-16 md:py-20">
       <div className="section-shell">
-        <div className="rounded-lg bg-white p-8 shadow-panel md:p-10">
-          <div className="grid items-center gap-8 lg:grid-cols-[1fr_auto]">
+        <div className="overflow-hidden rounded-lg border border-bank-line bg-white shadow-panel">
+          <div className="grid items-center gap-8 border-b border-bank-line p-8 md:p-10 lg:grid-cols-[1fr_auto]">
             <div>
               <p className="text-sm font-bold uppercase tracking-widest text-bank-red">Try the Trade Finance Risk Demo</p>
-              <h2 className="mt-3 text-3xl font-bold text-bank-navy">Analyse HK Smart Components Ltd&apos;s HK$800,000 trade finance application.</h2>
+              <h2 className="mt-3 text-3xl font-bold text-bank-navy">Understand the complete case in under 2 minutes.</h2>
+              <p className="mt-3 max-w-2xl text-sm font-semibold leading-6 text-bank-muted">
+                Follow one SME application from upload to verification, risk dashboard, credit memo and privacy-preserving audit record.
+              </p>
             </div>
-            <PrimaryButton href="/demo/upload">Start Demo</PrimaryButton>
+              <PrimaryButton href="/backoffice">Start Demo</PrimaryButton>
+          </div>
+          <div className="grid gap-0 md:grid-cols-5">
+            {demoFlowCards.map(([step, title, body]) => (
+              <article key={title} className="border-b border-bank-line p-5 last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0">
+                <span className="grid h-8 w-8 place-items-center rounded-md bg-bank-navy text-sm font-bold text-white">{step}</span>
+                <h3 className="mt-4 font-bold text-bank-navy">{title}</h3>
+                <p className="mt-2 text-sm leading-5 text-bank-muted">{body}</p>
+              </article>
+            ))}
           </div>
         </div>
       </div>
@@ -218,7 +247,7 @@ export function ArchitectureSection() {
   return (
     <section className="py-16 md:py-20">
       <div className="section-shell">
-        <SectionHeader title="Technology Architecture" body="GenAI explains. Big Data scores. Blockchain audits. Human officers decide." />
+        <SectionHeader eyebrow="Architecture" title="Technology Architecture" body="GenAI explains. Big Data scores. Blockchain audits. Human officers decide." />
         <div className="mt-10 grid gap-4">
           {architectureLayers.map(({ title, body, icon: Icon }, index) => (
             <article key={title} className="grid gap-4 rounded-lg border border-bank-line bg-white p-5 shadow-subtle md:grid-cols-[220px_1fr_40px] md:items-center">
@@ -242,7 +271,7 @@ export function ImpactSection() {
   return (
     <section id="impact" className="bg-white py-16 md:py-20">
       <div className="section-shell">
-        <SectionHeader title="Business Impact for BOCHK" />
+        <SectionHeader eyebrow="Business value" title="Business Impact for BOCHK" />
         <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {impactKpis.map(([title, body, icon]) => (
             <KPIcard key={title} title={title} body={body} icon={icon} />
@@ -258,8 +287,8 @@ export function GovernanceSection() {
     <section id="governance" className="py-16 md:py-20">
       <div className="section-shell">
         <SectionHeader title="Built for Banking Governance" />
-        <div className="mt-10 overflow-hidden rounded-lg border border-bank-line bg-white shadow-subtle">
-          <table className="w-full border-collapse text-left text-sm">
+        <div className="mt-10 overflow-x-auto rounded-lg border border-bank-line bg-white shadow-subtle">
+          <table className="w-full min-w-[620px] border-collapse text-left text-sm">
             <thead className="bg-bank-navy text-white">
               <tr>
                 <th className="p-4">Risk</th>
@@ -315,7 +344,7 @@ export function ClosingSection() {
         <h2 className="mx-auto max-w-3xl text-4xl font-bold text-bank-navy">Turn fragmented trade data into auditable risk intelligence.</h2>
         <p className="mx-auto mt-4 max-w-2xl text-lg leading-7 text-bank-muted">TradeSafe helps BOCHK make faster, safer and more inclusive cross-border SME financing decisions.</p>
         <div className="mt-8">
-          <PrimaryButton href="/demo/upload">Start Live Demo</PrimaryButton>
+          <PrimaryButton href="/backoffice">Start Live Demo</PrimaryButton>
         </div>
       </div>
     </section>
