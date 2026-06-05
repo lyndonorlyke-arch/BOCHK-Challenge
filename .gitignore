@@ -2,3 +2,5 @@
 node_modules/
 dev-server.log
 npm-debug.log*
+
+.vercel
