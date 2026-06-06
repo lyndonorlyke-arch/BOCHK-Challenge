@@ -422,8 +422,9 @@ export const routeSteps = [
 
 export const demoSteps = [
   { label: "Application Upload", href: "/demo/upload", icon: FileText },
-  { label: "AI Verification", href: "/demo/verification", icon: FileCheck2 },
+  { label: "AI Document Reader", href: "/demo/document-reader", icon: FileText },
+  { label: "Transaction Verification", href: "/demo/verification", icon: FileCheck2 },
   { label: "Risk Dashboard", href: "/demo/risk-dashboard", icon: Gauge },
   { label: "AI Credit Memo", href: "/demo/credit-memo", icon: Landmark },
-  { label: "Audit Trail", href: "/demo/audit-trail", icon: GitBranch }
+  { label: "Approval & Audit Trail", href: "/demo/audit-trail", icon: GitBranch }
 ];
