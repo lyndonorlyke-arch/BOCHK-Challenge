@@ -21,17 +21,13 @@ export function MetricCard({
     blue: "bg-blue-50 text-bank-blue"
   }[tone];
   return (
-    <article className="rounded-lg border border-bank-line bg-white p-5 shadow-sm">
-      <div className="flex items-start gap-4">
-        <span className={`grid h-12 w-12 shrink-0 place-items-center rounded-full ${toneClass}`}>
-          <Icon size={22} />
-        </span>
-        <div className="min-w-0">
-          <p className="text-sm font-semibold leading-5 text-bank-muted">{label}</p>
-          <p className="mt-2 text-2xl font-bold text-bank-navy sm:text-3xl">{value}</p>
-          {change ? <p className="mt-2 text-xs font-bold text-green-700">{change}</p> : null}
-        </div>
-      </div>
+    <article className="min-w-0 rounded-lg border border-bank-line bg-white p-5 shadow-sm">
+      <span className={`grid h-11 w-11 shrink-0 place-items-center rounded-full ${toneClass}`}>
+        <Icon size={20} />
+      </span>
+      <p className="mt-4 min-h-10 text-sm font-semibold leading-5 text-bank-muted">{label}</p>
+      <p className="mt-2 break-words text-[clamp(1.75rem,2.2vw,2.35rem)] font-bold leading-tight text-bank-navy">{value}</p>
+      {change ? <p className="mt-3 text-xs font-bold leading-5 text-green-700">{change}</p> : null}
     </article>
   );
 }

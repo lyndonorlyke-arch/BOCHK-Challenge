@@ -1,18 +1,18 @@
 import Link from "next/link";
 import {
   Banknote,
-  CalendarDays,
   CheckCircle2,
   ChevronRight,
   Clock3,
   Download,
-  FileText,
   ShieldAlert,
   ShieldCheck,
   TrendingUp
 } from "lucide-react";
+import { CashFlowTrendCard } from "@/components/cash-flow-trend-card";
+import { DateRangeControl } from "@/components/date-range-control";
 import { GhostButton, Panel, RedButton, TradeSafeShell } from "@/components/tradesafe-shell";
-import { AlertRow, DonutChart, GaugeChart, MetricCard, MiniLineChart, ProgressBar, ScoreCard } from "@/components/tradesafe-widgets";
+import { AlertRow, DonutChart, GaugeChart, MetricCard, ProgressBar, ScoreCard } from "@/components/tradesafe-widgets";
 
 const riskFlags = [
   ["New Counterparty", 18, "34%"],
@@ -38,10 +38,7 @@ export default function BackOfficePage() {
       subtitle="Cross-border SME trade finance portfolio overview"
       actions={
         <>
-          <GhostButton>
-            <CalendarDays size={17} className="mr-2" />
-            May 1 - May 31, 2025
-          </GhostButton>
+          <DateRangeControl />
           <RedButton>
             <Download size={17} className="mr-2" />
             Export Summary
@@ -49,8 +46,7 @@ export default function BackOfficePage() {
         </>
       }
     >
-      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-6">
-        <MetricCard icon={FileText} label="Applications in Review" value="24" change="vs Apr: +14.3%" />
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
         <MetricCard icon={TrendingUp} label="AI Parsing Success Rate" value="96.4%" change="vs Apr: +2.1%" />
         <MetricCard icon={Clock3} label="Average Approval Time" value="1.8 days" change="vs Apr: -0.4 days" />
         <MetricCard icon={Banknote} label="Monthly Trade Volume" value="HK$48.2M" change="vs Apr: +8.7%" />
@@ -92,17 +88,7 @@ export default function BackOfficePage() {
       </div>
 
       <div className="mt-4 grid gap-4 xl:grid-cols-[1.25fr_0.68fr_0.68fr]">
-        <Panel className="p-5">
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <h2 className="font-bold text-bank-navy">12-Month Cash Flow Trend</h2>
-            <span className="rounded-md border border-bank-line px-3 py-1.5 text-xs font-bold text-bank-navy">Monthly</span>
-          </div>
-          <div className="mt-2 flex gap-5 text-xs font-semibold text-bank-muted">
-            <span><span className="mr-2 inline-block h-2 w-2 rounded-full bg-bank-red" />Inflow (HK$M)</span>
-            <span><span className="mr-2 inline-block h-2 w-2 rounded-full bg-slate-400" />Outflow (HK$M)</span>
-          </div>
-          <MiniLineChart />
-        </Panel>
+        <CashFlowTrendCard />
 
         <Panel className="p-5">
           <h2 className="font-bold text-bank-navy">Buyer Concentration by Region</h2>
