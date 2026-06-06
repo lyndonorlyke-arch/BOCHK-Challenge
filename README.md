@@ -1,5 +1,9 @@
 # BOCHK TradeSafe Credit Co-pilot
 
+## Live Demo
+
+[Open the BOCHK TradeSafe web app](https://bochk-challenge.vercel.app/backoffice)
+
 BOCHK TradeSafe Credit Co-pilot is a responsive fintech product demo for the BOCHK Challenge. It presents an internal corporate-banking workflow where relationship managers, credit officers and compliance teams can review SME trade finance applications, inspect AI-extracted documents, assess portfolio risk and record auditable officer decisions.
 
 The product is governance-first:
