@@ -10,14 +10,14 @@ const config: Config = {
     extend: {
       colors: {
         bank: {
-          navy: "#0B1F3A",
+          navy: "#0B234A",
           blue: "#123B6D",
-          red: "#C8102E",
-          darkRed: "#B5121B",
-          bg: "#F6F8FB",
+          red: "#A61E2D",
+          darkRed: "#8F1725",
+          bg: "#F8F9FB",
           ink: "#1F2937",
           muted: "#6B7280",
-          line: "#DDE4EE"
+          line: "#E5E7EB"
         }
       },
       boxShadow: {
